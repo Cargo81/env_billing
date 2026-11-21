@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Django Context From Views</h1>
+
+        <ul>
+            <h2> {{page_title}} </h2>
+            {% for post in posts %}
+                
+                <li> {{post.title}} </li>
+                <li> {{post.views}} </li>
+            {% endfor %}
+        </ul>
+
+        <div>
+            <h2>Name: {{user_data.name}} </h2>
+            <p>Age: {{user_data.age}} </p>
+        </div>
+
+        <div>
+            <h3>Skills in views</h3>
+            {% for skill in skills %}
+            <li> {{skill}} </li>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
