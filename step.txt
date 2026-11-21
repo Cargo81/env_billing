@@ -1,0 +1,17 @@
+STEP-1 ===> Create a box
+VS-CODE TERMINAL => python3 -m vanv vanv
+
+STEP-2 ===> Inside a box
+ACTIVATE VENV ==> source venv/bin/activate
+
+STEP-3 ===> Install Django
+pip3 install django
+
+STEP-4 ===> VERIFICATION
+python3 -m django --version
+
+
+============================
+ ******* START PROJECT ********
+ *** django-admin startproject mysite .
+ *** python3 manage.py invoices
