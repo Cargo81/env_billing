@@ -11,5 +11,4 @@ class InvoiceAdmin(admin.ModelAdmin):
     list_filter = ['is_paid', 'date_created']
     ordering = ['date_created']
     
-
 admin.site.register(Invoice, InvoiceAdmin)

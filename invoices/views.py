@@ -1,8 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from datetime import datetime
+from .forms import InvoiceForm
 
 # Create your views here.
+
+def add_invoice(request):
+    if request.method == 'POST':
+        form = InvoiceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render('all-invoices')
+        else:
+            form = InvoiceForm()
+        data = {
+            'form':form
+        }
+        return redirect(request, )
 class User:
     def __init__(self, name, age):
         self.name = name
