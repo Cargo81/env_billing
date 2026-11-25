@@ -1,24 +1,63 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Invoice</title>
-</head>
-<body>
-    <div>
-        <div>
-            <h1>Create Invoice</h1>
-            <p>Enter customer and invoice details below.</p>
 
-            <form method="POST">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-4 py-10">
+
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">
+                Create Invoice
+            </h1>
+
+            <p class="text-gray-500 mt-2">
+                Enter customer and invoice details below.
+            </p>
+        </div>
+
+        <!-- Form Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
+
+            <form method="POST" class="space-y-5">
+
                 {% csrf_token %}
 
-               {{ form.as_p }}
+                <!-- Django Form Fields -->
+                <div class="space-y-4 text-gray-700">
+                    {{ form.as_p }}
+                </div>
 
-               <button type='submit' class="">Save Invoice</button>
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+
+                    <button
+                        type="submit"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition cursor-pointer">
+                        Save Invoice
+                    </button>
+
+                    <a
+                        href="{% url 'invoice_list' %}"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold px-6 py-3 rounded-lg text-center transition">
+                        Cancel
+                    </a>
+
+                </div>
+
             </form>
+
         </div>
+
     </div>
+
 </body>
 </html>
