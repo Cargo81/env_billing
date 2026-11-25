@@ -23,4 +23,6 @@ def post(request):
         'user_data': user_obj,
         'is_featured':True,
     }
-    return render(request, 'invoices/post.html', context)
+        
+    
+    return render(request, 'invoices/post.html', context,)
