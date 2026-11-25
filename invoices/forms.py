@@ -39,6 +39,6 @@ class InvoiceForm(forms.ModelForm):
             'notes': forms.Textarea(attrs={
                 'class': 'w-full border border-gray-300 rounded-lg px-4 py-3 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500',
                 'placeholder': 'Enter invoice notes',
-                'rows': 4
+                'rows': 5
             }),
         }
