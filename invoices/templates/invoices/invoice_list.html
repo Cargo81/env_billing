@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invoice Management</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="bg-gray-100 min-h-screen">
+      <div class="max-w-6xl mx-auto px-4 py-10">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold text-gray-800">
+              Invoice Management System
+            </h1>
+            <p class="text-gray-500 mt-2">
+              Manage and track all your invoices.
+            </p>
+          </div>
+
+          <a
+            href=" {% url 'invoice_create' %} "
+            class="bg-blue-900 hover:bg-blue-700 font-medium text-white px-5 py-3 rounded-lg transition"
+          >
+            + Create Invoice
+          </a>
+        </div>
+
+        <!-- Invoice Table Card -->
+        <div
+          class="border border-gray-200 bg-white rounded-xl shadow-sm overflow-hidden"
+        >
+          <div class="p-6 border-b border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800">All Invoices</h2>
+            <p class="text-sm mt-1 text-gray-500">
+              Your invoice records are listed below.
+            </p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left">
+              <thead class="bg-gray-50 text-gray-500 text-sm uppercase">
+                <tr>
+                  <th class="px-6 py-4">Invoice No</th>
+                  <th class="px-6 py-4">Customer</th>
+                  <th class="px-6 py-4">Amount</th>
+                  <th class="px-6 py-4">Date</th>
+                  <th class="px-6 py-4">Status</th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-gray-200 text-gray-700">
+                {% for invoice in invoices %}
+                <tr class="hover:bg-gray-50 transition">
+                  <td class="px-6 py-4 font-medium text-gray-900">
+                    {{ invoice.invoice_number }}
+                  </td>
+                  <td class="px-6 py-4">{{ invoice.customer_name }}</td>
+                  <td class="px-6 py-4 font-medium">{{ invoice.amount }}</td>
+                  <td class="px-6 py-4">{{ invoice.date_created }}</td>
+                  <td>
+                    {% if invoice.is_paid %}
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                    {% else %}
+                    <span
+                      class="bg-red-200 text-red-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Pending
+                    </span>
+                    {% endif %}
+                  </td>
+                </tr>
+
+                {% empty %}
+                <tr>
+                  <td>No invoices available.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
