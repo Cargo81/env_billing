@@ -1,0 +1,116 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Invoice</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body class="bg-gray-100 min-h-screen">
+
+    <div class="max-w-3xl mx-auto px-4 py-10">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-800">
+          Edit Invoice
+        </h1>
+
+        <p class="text-gray-500 mt-2">
+          Update your invoice information below.
+        </p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+
+        <div class="p-6 border-b border-gray-200">
+          <h2 class="text-xl font-semibold text-gray-800">
+            Invoice Details
+          </h2>
+
+          <p class="text-sm text-gray-500 mt-1">
+            Modify the existing invoice details.
+          </p>
+        </div>
+
+        <div class="p-6">
+
+          <form method="POST" class="space-y-5">
+
+            {% csrf_token %}
+
+            <!-- Django Form Fields -->
+            <div class="space-y-4 text-gray-700
+                        [&_p]:space-y-2
+                        [&_label]:block
+                        [&_label]:text-sm
+                        [&_label]:font-medium
+                        [&_input]:w-full
+                        [&_input]:border
+                        [&_input]:border-gray-300
+                        [&_input]:rounded-lg
+                        [&_input]:px-4
+                        [&_input]:py-3
+                        [&_input]:outline-none
+                        [&_input]:focus:ring-2
+                        [&_input]:focus:ring-blue-500
+                        [&_input]:focus:border-blue-500
+                        [&_select]:w-full
+                        [&_select]:border
+                        [&_select]:border-gray-300
+                        [&_select]:rounded-lg
+                        [&_select]:px-4
+                        [&_select]:py-3
+                        [&_textarea]:w-full
+                        [&_textarea]:border
+                        [&_textarea]:border-gray-300
+                        [&_textarea]:rounded-lg
+                        [&_textarea]:px-4
+                        [&_textarea]:py-3">
+
+              {{ form.as_p }}
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
+
+              <button
+                type="submit"
+                class="bg-blue-900 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition"
+              >
+                Update Invoice
+              </button>
+
+              <a
+                href="{% url 'invoice_list' %}"
+                class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium px-6 py-3 rounded-lg text-center transition"
+              >
+                Cancel
+              </a>
+
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- Back Link -->
+      <div class="mt-6">
+        <a
+          href="{% url 'invoice_list' %}"
+          class="text-blue-700 hover:text-blue-900 font-medium text-sm"
+        >
+          ← Back to Invoice List
+        </a>
+      </div>
+
+    </div>
+
+  </body>
+</html>

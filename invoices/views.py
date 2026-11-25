@@ -39,6 +39,20 @@ def invoice_update(request, pk):
         if form.is_valid():
             form.save()
             return redirect('invoice_list')
-        else:
-            form = InvoiceForm(instance=invoices)
-            return render(request, 'invoices/invoice_update.html')
+        
+    else:
+      form = InvoiceForm(instance=invoices)
+    return render(request, 'invoices/invoice_update.html', 
+                        {
+                              'form':form,
+                              'invoices':invoices
+                          })
+    
+def invoice_delete(request, pk):
+    invoice = get_object_or_404(Invoice, pk=pk)
+    
+    if request.method == 'POST':
+        invoice.delete()
+        return redirect('invoice_list')
+    
+    return render(request, 'invoices/invoice_delete.html', {'invoice':invoice})
